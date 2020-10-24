@@ -32,6 +32,7 @@ function SearchBox({ onSubmit }) {
             className={styles.searchButton}
             color="primary"
             type="submit"
+            disabled={!search}
           >
             Search
           </Button>

@@ -5,12 +5,12 @@ export const initialResults = [...Array(10).keys()].map(key => ({
   avatar: "https://via.placeholder.com/80",
   opportunities: [
     {
-      interest: "jobs",
+      interest: "employment",
       active: true,
       private: true,
     },
     {
-      interest: "gigs",
+      interest: "freelance gigs",
       active: false,
     },
     {
@@ -22,7 +22,7 @@ export const initialResults = [...Array(10).keys()].map(key => ({
       desirableCompensationPeriodicity: "yearly",
     },
     {
-      interest: "advising",
+      interest: "advising others",
       active: true,
       private: false,
       desirableCompensationCurrency: "USD$",
@@ -30,7 +30,7 @@ export const initialResults = [...Array(10).keys()].map(key => ({
       desirableCompensationPeriodicity: "yearly",
     },
     {
-      interest: "mentoring",
+      interest: "mentoring others",
       active: true,
       private: true,
       desirableCompensationCurrency: "USD$",

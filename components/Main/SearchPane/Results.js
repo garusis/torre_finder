@@ -30,7 +30,7 @@ function Oportunity({ opportunity }) {
 
   if (!opportunity.active) return null;
 
-  if (opportunity.private) {
+  if (opportunity.private || !currency) {
     return <span className={styles.line}>{interest}</span>;
   }
   return (
@@ -81,21 +81,24 @@ function ShortProfile({ profile }) {
             </Skeleton>
           }
         />
-        <CardContent className={styles.profileContent}>
-          <Typography variant="body1" component="p">
-            <Skeleton width={90}>Open to:</Skeleton>
-          </Typography>
-          <Typography variant="body1" component="p">
-            {profile.opportunities.map(opportunity => (
-              <Skeleton width={200}>
-                <Oportunity
-                  key={opportunity.interest}
-                  opportunity={opportunity}
-                />
-              </Skeleton>
-            ))}
-          </Typography>
-        </CardContent>
+        {profile.opportunities.length > 0 && (
+          <CardContent className={styles.profileContent}>
+            <Typography variant="body1" component="p">
+              <Skeleton width={90}>Open to:</Skeleton>
+            </Typography>
+            <Typography variant="body1" component="p">
+              {profile.opportunities.map(opportunity => (
+                <Skeleton width={200}>
+                  <Oportunity
+                    key={opportunity.interest}
+                    opportunity={opportunity}
+                  />
+                </Skeleton>
+              ))}
+            </Typography>
+          </CardContent>
+        )}
+
         <CardActions>
           <Skeleton
             className={styles.viewDetails}
