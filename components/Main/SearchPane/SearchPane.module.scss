@@ -1,6 +1,9 @@
 .searchPane {
   display: flex;
   align-items: center;
+  .displayResults {
+    margin-top: 100px;
+  }
 
   form {
     width: 100%;
@@ -10,6 +13,7 @@
       padding-right: 0;
       input {
         padding-left: 8px;
+        padding-right: 8px;
       }
     }
 

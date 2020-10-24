@@ -13,8 +13,13 @@ function SearchBox({ onSubmit }) {
     setSearch(event.target.value);
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    onSubmit(search);
+  };
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <OutlinedInput
         className={styles.searchBox}
         placeholder="Search by Name or Username"

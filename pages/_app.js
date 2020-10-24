@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/globals.css";
 import Head from "next/head";
+import ErrorSnackbar from "../components/ErrorSnackbar";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <Component {...pageProps} />
+      <ErrorSnackbar />
     </React.Fragment>
   );
 }
