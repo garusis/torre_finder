@@ -1,5 +1,2 @@
-export default function Home() {
-  return (
-
-  )
-}
+import Main from "../components/Main";
+export default Main;

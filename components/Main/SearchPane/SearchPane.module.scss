@@ -1,0 +1,22 @@
+.searchPane {
+  display: flex;
+  align-items: center;
+
+  form {
+    width: 100%;
+    .searchBox {
+      flex: 1;
+      display: flex !important;
+      padding-right: 0;
+      input {
+        padding-left: 8px;
+      }
+    }
+
+    .searchButton {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      padding: 16px 16px;
+    }
+  }
+}
