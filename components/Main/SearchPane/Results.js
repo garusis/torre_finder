@@ -2,10 +2,8 @@ import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -142,7 +140,7 @@ ShortProfile.propTypes = {
   }),
 };
 
-function Results({ isLoading, users }) {
+function Results({ isLoading, users, meta }) {
   if (!isLoading && !users) return null;
 
   const results = isLoading ? initialResults : users;
@@ -152,7 +150,8 @@ function Results({ isLoading, users }) {
       <Grid item>
         <Skeleton height="24px">
           <Typography variant="subtitle1">
-            Showing results x - y of around xxxx
+            Showing results {meta.offset + 1} - {meta.offset + results.length}{" "}
+            of {meta.total}
           </Typography>
         </Skeleton>
       </Grid>
@@ -163,9 +162,22 @@ function Results({ isLoading, users }) {
   );
 }
 
+Results.defaultProps = {
+  meta: {
+    offset: 0,
+    size: 0,
+    total: 0,
+  },
+};
+
 Results.propTypes = {
   isLoading: PropTypes.bool,
   users: PropTypes.arrayOf(ShortProfile.propTypes.profile),
+  meta: PropTypes.shape({
+    offset: PropTypes.number,
+    size: PropTypes.number,
+    total: PropTypes.number,
+  }),
 };
 
 export default Results;

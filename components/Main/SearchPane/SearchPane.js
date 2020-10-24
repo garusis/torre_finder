@@ -38,7 +38,7 @@ function SearchPane() {
             justify="center"
             spacing={2}
           >
-            <Results isLoading={isLoading} users={users} />
+            <Results isLoading={isLoading} users={users} meta={meta} />
           </Grid>
         </Grid>
       </Grid>
