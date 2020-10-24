@@ -19,7 +19,7 @@ export default function ErrorSnackbar() {
   return (
     <Snackbar
       open={!!errorMessage}
-      autoHideDuration={10000}
+      autoHideDuration={3000}
       onClose={actions.clearError}
     >
       <Alert

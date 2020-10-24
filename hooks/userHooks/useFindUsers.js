@@ -15,8 +15,12 @@ async function fetcher(...args) {
 
 function useFindUsers(userQuery) {
   const { data, error } = useSWR(
-    userQuery ? `/api/userssds?query=${userQuery}` : null,
-    fetcher
+    userQuery ? `/api/users?query=${userQuery}` : null,
+    fetcher,
+    {
+      initialData: null,
+      shouldRetryOnError: false,
+    }
   );
 
   const actions = useErrorHandler(state => state.actions);
@@ -26,14 +30,12 @@ function useFindUsers(userQuery) {
       actions.displayError("There was an error loading the list of users");
       console.log(error);
     }
-  }, [error]);
+  }, [error, actions]);
 
-  console.log(data, error);
-
-  const users = error ? [] : data;
+  const users = error ? [] : data?.items;
   const isLoading = userQuery && !data && !error;
 
-  return { users, isLoading };
+  return { users, isLoading, meta: data?.__meta__ };
 }
 
 export default useFindUsers;

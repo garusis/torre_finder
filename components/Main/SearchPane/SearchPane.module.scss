@@ -1,7 +1,7 @@
 .searchPane {
   display: flex;
   align-items: center;
-  .displayResults {
+  &.displayResults {
     margin-top: 100px;
   }
 
@@ -21,6 +21,32 @@
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
       padding: 16px 16px;
+    }
+  }
+
+  .results {
+    .profile {
+      .avatar {
+        width: 80px;
+        height: 80px;
+      }
+      .viewDetails {
+        margin-left: auto;
+      }
+      .profileContent {
+        display: flex;
+        > p {
+          &:first-child {
+            margin-right: 8px;
+          }
+          .line {
+            display: block;
+            .lineDetail {
+              font-weight: bold;
+            }
+          }
+        }
+      }
     }
   }
 }

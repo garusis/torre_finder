@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
 import Grid from "@material-ui/core/Grid";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import Person from "@material-ui/icons/Person";
 
 import styles from "./SearchPane.module.scss";
 
@@ -10,23 +8,40 @@ import useNavigationStore, {
   NAVIGATION_IDS,
 } from "../../../hooks/useNavigationStore";
 import SearchBox from "./SearchBox";
-import useFindUsers from "../../../hooks/userHooks/useFindUser";
+import useFindUsers from "../../../hooks/userHooks/useFindUsers";
+import Results from "./Results";
+import { LoadingContext } from "../../Skeleton";
 
 function SearchPane() {
   const [userQuery, setQuery] = useState();
 
   const navigationState = useNavigationStore(state => state.navigationState);
-  const { isLoading, users } = useFindUsers(userQuery);
+  const { isLoading, users, meta } = useFindUsers(userQuery);
 
   return (
     <Grid
-      className={cn(styles.searchPane, { displayResults: userQuery })}
+      className={cn(styles.searchPane, { [styles.displayResults]: userQuery })}
       item
       xs={12}
       sm={6}
       lg={navigationState === NAVIGATION_IDS.INITIAL ? 6 : 3}
     >
-      <SearchBox onSubmit={setQuery} />
+      <Grid container direction="column" justify="center" spacing={5}>
+        <Grid item xs={12}>
+          <SearchBox onSubmit={setQuery} />
+        </Grid>
+        <Grid item xs={12}>
+          <Grid
+            className={styles.results}
+            container
+            direction="column"
+            justify="center"
+            spacing={2}
+          >
+            <Results isLoading={isLoading} users={users} />
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }
