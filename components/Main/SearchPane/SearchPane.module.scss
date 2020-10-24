@@ -1,9 +1,7 @@
 .searchPane {
   display: flex;
   align-items: center;
-  &.displayResults {
-    margin-top: 100px;
-  }
+  margin-top: 50px!important;
 
   form {
     width: 100%;

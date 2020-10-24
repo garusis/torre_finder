@@ -75,16 +75,16 @@ function ShortProfile({ profile }) {
           }
           subheader={
             <Skeleton height={42}>
-              <Typography variant="h6">{profile.headline}</Typography>
+              <Typography variant="subtitle1">{profile.headline}</Typography>
             </Skeleton>
           }
         />
         {profile.opportunities.length > 0 && (
           <CardContent className={styles.profileContent}>
-            <Typography variant="body1" component="p">
+            <Typography variant="body2" component="p">
               <Skeleton width={90}>Open to:</Skeleton>
             </Typography>
-            <Typography variant="body1" component="p">
+            <Typography variant="body2" component="p">
               {profile.opportunities.map(opportunity => (
                 <Skeleton width={200}>
                   <Oportunity

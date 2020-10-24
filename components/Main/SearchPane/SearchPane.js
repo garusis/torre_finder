@@ -10,7 +10,6 @@ import useNavigationStore, {
 import SearchBox from "./SearchBox";
 import useFindUsers from "../../../hooks/userHooks/useFindUsers";
 import Results from "./Results";
-import { LoadingContext } from "../../Skeleton";
 
 function SearchPane() {
   const [userQuery, setQuery] = useState();
@@ -20,7 +19,7 @@ function SearchPane() {
 
   return (
     <Grid
-      className={cn(styles.searchPane, { [styles.displayResults]: userQuery })}
+      className={styles.searchPane}
       item
       xs={12}
       sm={6}
